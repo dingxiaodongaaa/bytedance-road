@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <script>
+    Function.prototype.myApply = function (context) {
+      let context = context || window
+      const fn = Symbol('fn')
+      context[fn] = this
+      let ret
+      if (arguments[1]) {
+        ret = context[fn](...arguments[1])
+      } else {
+        ret = context[fn]()
+      }
+      delete context[fn]
+      return ret
+    }
+    const name = 'window'
+    function Male (name) {
+      this.name = name
+      this.gender = '男'
+    }
+    Male.prototype.sayHello = function (age) {
+      console.log(`hello, my name is ${this.name} and ${age} years old`)
+    }
+    const xiaoming = new Male('xiaoming')
+    xiaoming.sayHello(18)
+    const xiaohei = {
+      name: 'xiaohei'
+    }
+    xiaoming.sayHello.myApply(xiaohei, [20])
+    xiaoming.sayHello.myApply()
+  </script> -->
+
+  <script>
+    Function.prototype.myCall = function (context) {
+      var context = context || window
+      const fn = Symbol('fn')
+      context[fn] = this
+      let ret
+      const args = [...arguments]
+      args.shift()
+      if (args.length) {
+        ret = context[fn](...args)
+      } else {
+        ret = context[fn]()
+      }
+      delete context[fn]
+      return ret
+    }
+    const name = 'window'
+    function Male (name) {
+      this.name = name
+      this.gender = '男'
+    }
+    Male.prototype.sayHello = function (age, num) {
+      console.log(`hello, my name is ${this.name} and ${age} years old ${num}`)
+    }
+    const xiaoming = new Male('xiaoming')
+    xiaoming.sayHello(18)
+    const xiaohei = {
+      name: 'xiaohei'
+    }
+    xiaoming.sayHello.myCall(xiaohei, 20, 33)
+    xiaoming.sayHello.myCall()
+  </script>
+</body>
+</html>

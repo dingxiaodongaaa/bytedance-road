@@ -1,4 +1,4 @@
-const program = require('commander')
+const { program } = require('commander')
 const chalk = require('chalk')
 const path = require('path')
 
@@ -9,7 +9,10 @@ program.command('build [options]')
   .description('build for production')
   .action((env, options) => {
     // const { dir } = options.parent
-    console.log(env, options, program.opts())
+    // console.log(process.argv)
+    
+    // console.log(program.args)
+    console.log(env, options, program.opts(), program.opts().dir)
     console.log(chalk.green('[INFO] >>> build start...'))
   })
 

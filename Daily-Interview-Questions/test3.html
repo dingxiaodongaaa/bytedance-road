@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+<body>
+
+  <script>
+    // 方法一：toLocaleString() 或 NumberFormat.format()
+    // function readableNumber(value) {
+    //   return Number(value).toLocaleString()
+    // }
+    // function readableNumber(value) {
+    //   return new Intl.NumberFormat().format(Number(value))
+    // }
+    // // 方法二：正则
+    // function readableNumber(value) {
+    //   const reg = /(\d)(?=(\d{3})+(\.\d+)?$)/g
+    //   return value.toString().replace(reg, '$1,')
+    // }
+    // 不考虑小数点的写法
+    // function readableNumber(value) {
+    //   const reg =  /(\d)(?=(\d{3})+$)/g
+    //   const tempArr = value.toString().split('.')
+    //   tempArr[0] = tempArr[0].replace(reg, '$1,')
+    //   return tempArr.join('.')
+    // }
+    // // 方法三：转成数组遍历
+    // function readableNumber(value) {
+    //   // 第一步：将整数部分和小数部分分开
+    //   const valueStr = value.toString()
+    //   const tempArr = valueStr.split('.')
+    //   const tempIntArr = tempArr[0].split('')
+    //   // 第二步：遍历插入 ,
+    //   for (let i = 2; i < tempArr[0].length; i += 4) {
+    //     tempIntArr.splice(i, 0 , ',')
+    //   }
+    //   // 第三步：将整数部分和小数部分合并
+    //   tempArr[0] =  tempIntArr.join('')
+    //   return tempArr.join('.')
+    // }
+    console.log(readableNumber(12345678))
+    console.log(readableNumber(12345678.7899))
+
+    // function objectFactory() {
+    //   const obj = new Object()
+    //   const Constructor = [].shift.call(arguments)
+    //   obj.__proto__ = Constructor.prototype
+    //   const ret = Constructor.apply(obj, arguments)
+    //   return typeof ret === 'object' ? ret : obj
+    // }
+
+    // function Person (name, sex) {
+    //   this.name = name
+    //   this.sex = sex
+    //   this.mark = 'person'
+    // }
+
+    // Person.prototype.say = function (value) {
+    //   console.log(value)
+    // }
+
+    // // const xiaoliang = new Person('xiaoliang', 'male')
+    // const xiaoliang = objectFactory(Person, 'xiaoliang', 'male')
+    // console.log(xiaoliang)
+
+    // function promiseAll (promises) {
+    //   if (Array.isArray(promises)) {
+
+    //   }
+    // }
+
+  </script>
+
+  <style>
+  *{
+    padding: 0;
+    margin: 0;
+  }
+  div {
+    width: 400px;
+    background: red;
+  }
+  p {
+    width: 100%;
+    padding-top: 75%;
+    background: skyblue;
+  }
+  </style>
+  
+  <div>
+    <p></p>
+  </div>
+</body>
+</html>
